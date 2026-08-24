@@ -37,5 +37,20 @@ const carrinho = items.filter(item => item.quantidade > 0);
 const subtotal = carrinho.reduce((ac, item) => ac + item.preco * item.quantidade, 0);
 const total = subtotal > 0 ? subtotal : 0;
 
+const confirmarCompra = () => {
+    setEnviar(true);
+    setStatus("Estamos Processando sua compra...");
+    setTimeout(() => {
+        setStatus("Verificando lugares...")
+        setEnviar(false)
+    }, 5000);
+    setTimeout(() => {
+        setStatus("Sua Compra foi registrada com sucesso!")
+        setEnviar(false)
+    }, 10000)
+}
+
+
+
 
 
