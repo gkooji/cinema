@@ -8,7 +8,7 @@ const catalogo = [
     { id: 3, nome: "Super Mario 7", preco: 30.00, disponivel: true, quantidade: 0 },
     { id: 4, nome: "Bob Esponja", preco: 30.00, disponivel: true, quantidade: 0 },
 ];
-const Cinema = () => {}
+const Cinema = () => {
 
     // HOOK-useState-Manipula o estado da variável
     //Estados para gerenciar a lista de items
@@ -50,7 +50,60 @@ const confirmarCompra = () => {
     }, 10000)
 }
 
+    return (
+        <>
+            <div className="container">
+                <h2>Catálogo de Filmes</h2>
+                {produtosDisponiveis.map(produto => (
+                    <div key={produto.id} className="item-catalogo">
+                        <span>{produto.nome}(R$ {produto.preco.toFixed(2)})</span>
+                        <div className="item-controles">
+                            <button onClick={() => alterarQuantidade(produto.id, -1)} className="btn-qtn">-</button>
+                            <span>{produto.quantidade}</span>
+                            <button onClick={() => alterarQuantidade(produto.id, +1)} className="btn-qtn">+</button>
+                        </div>
+                    </div>
+                ))}
 
+                <hr className="linha" />
+                <h3>Resumo da Compra</h3>
+                {carrinho.length === 0 ? (
+                    <p>Seu Carrinho está Vazio</p>
+                ) : (
+                    <>
+
+                        <ul className="resum0-lista">
+                            {carrinho.map(item => (
+                                <li key={item.id}>
+                                    {item.quantidade} x {item.nome} R$ {(item.preco * item.quantidade).toFixed(2)}
+
+                                </li>
+                            ))}
+
+                        </ul>
+                        <p>Subtotal:R${subtotal.toFixed(2)}</p>
+                        <p>Taxa de Entrega: R${taxaEntrega.toFixed(2)}</p>
+                        <strong className="total">Total a pagar: R${total.toFixed(2)}</strong>
+                        <button className="btn-confirmar" onClick={confirmarCompra} disabled={enviar}>
+                            {enviar ? "Enviando...." : "Confirmar Compra"}
+
+                        </button>
+                    </>
+                )}
+                {status && (
+                    <div className="alerta-status">
+                        <strong>Alerta:</strong>{status}
+                    </div>
+                )}
+
+            </div>
+
+        </>
+    )
+}
+
+
+export default Cinema
 
 
 
