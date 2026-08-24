@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import '../css/estilo.css'
+import imgPele from '../assets/pele.jpg'
+import imgHomemAranha from '../assets/Aranha.jpg'
+import imgMario from '../assets/mario.jpg'
+import imgJiujitsu from '../assets/Jiujitsu.jpg'
+import imgPaz from '../assets/paz.jpg'
 
 //Array de objetos contendo o estado inicial do catálogo
 const catalogo = [
-    { id: 1, nome: "Filme do Pelé", preco: 30.00, disponivel: true, quantidade: 0 },
-    { id: 2, nome: "Homem aranha em busca de uma casa", preco: 30.00, disponivel: true, quantidade: 0 },
-    { id: 3, nome: "Super Mario 7", preco: 30.00, disponivel: true, quantidade: 0 },
-    { id: 4, nome: "O clube da paz", preco: 30.00, disponivel: true, quantidade: 0 },
-    { id: 5, nome: "Jiu Jitsu Kid", preco: 30.00, disponivel: true, quantidade: 0 },
+    { id: 1, nome: "Filme do Pelé", preco: 30.00, disponivel: true, quantidade: 0, imagem: imgPele },
+    { id: 2, nome: "Homem aranha em busca de uma casa", preco: 30.00, disponivel: true, quantidade: 0, imagem: imgHomemAranha },
+    { id: 3, nome: "Super Mario 7", preco: 30.00, disponivel: true, quantidade: 0, imagem: imgMario },
+    { id: 4, nome: "O clube da paz", preco: 30.00, disponivel: true, quantidade: 0, imagem: imgPaz },
+    { id: 5, nome: "Jiu Jitsu Kid", preco: 30.00, disponivel: true, quantidade: 0, imagem: imgJiujitsu },
 ];
 const Cinema = () => {
 
@@ -57,6 +62,7 @@ const confirmarCompra = () => {
                 <h2>Catálogo de Filmes</h2>
                 {produtosDisponiveis.map(produto => (
                     <div key={produto.id} className="item-catalogo">
+                        <img src={produto.imagem} alt={produto.nome} className="item-imagem" />
                         <span>{produto.nome}(R$ {produto.preco.toFixed(2)})</span>
                         <div className="item-controles">
                             <button onClick={() => alterarQuantidade(produto.id, -1)} className="btn-qtn">-</button>
