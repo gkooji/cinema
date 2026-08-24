@@ -6,7 +6,8 @@ const catalogo = [
     { id: 1, nome: "Filme do Pelé", preco: 30.00, disponivel: true, quantidade: 0 },
     { id: 2, nome: "Homem aranha em busca de uma casa", preco: 30.00, disponivel: true, quantidade: 0 },
     { id: 3, nome: "Super Mario 7", preco: 30.00, disponivel: true, quantidade: 0 },
-    { id: 4, nome: "Bob Esponja", preco: 30.00, disponivel: true, quantidade: 0 },
+    { id: 4, nome: "O clube da paz", preco: 30.00, disponivel: true, quantidade: 0 },
+    { id: 5, nome: "Jiu Jitsu Kid", preco: 30.00, disponivel: true, quantidade: 0 },
 ];
 const Cinema = () => {
 
@@ -75,14 +76,13 @@ const confirmarCompra = () => {
                         <ul className="resum0-lista">
                             {carrinho.map(item => (
                                 <li key={item.id}>
-                                    {item.quantidade} x {item.nome} R$ {(item.preco * item.quantidade).toFixed(2)}
+                                    Ingressos {item.quantidade} x {item.nome} R$ {(item.preco * item.quantidade).toFixed(2)}
 
                                 </li>
                             ))}
 
                         </ul>
                         <p>Subtotal:R${subtotal.toFixed(2)}</p>
-                        <p>Taxa de Entrega: R${taxaEntrega.toFixed(2)}</p>
                         <strong className="total">Total a pagar: R${total.toFixed(2)}</strong>
                         <button className="btn-confirmar" onClick={confirmarCompra} disabled={enviar}>
                             {enviar ? "Enviando...." : "Confirmar Compra"}
