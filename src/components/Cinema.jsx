@@ -29,4 +29,13 @@ const Cinema = () => {}
         )
     }
 
-    
+
+const produtosDisponiveis = items.filter(item => item.disponivel);
+const carrinho = items.filter(item => item.quantidade > 0);
+
+
+const subtotal = carrinho.reduce((ac, item) => ac + item.preco * item.quantidade, 0);
+const total = subtotal > 0 ? subtotal : 0;
+
+
+
